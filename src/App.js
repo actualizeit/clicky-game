@@ -34,6 +34,11 @@ class App extends Component {
         if(this.state.score > this.state.topScore){
           this.setState({topScore: this.state.score})
         }
+        if(this.state.score === 12){
+          this.setState({
+            rightWrong: ["By George you've won! Huzzah!", "I'm phoning your mother as we speak, she simply has to know."],
+            score: 0})
+        }
         console.log('Picked: '+ this.state.picsPicked + ' - Score: ' + this.state.score)})
     } else {
       console.log("wrong!");
@@ -41,7 +46,7 @@ class App extends Component {
       this.setState({
         picsPicked: temp,
         score: 0,
-        rightWrong: ["OH NO! It coo, click a pic to start over, we'll save your top score fam"]
+        rightWrong: ["OH NO! It coo, you can click a pic to start over!", "And don't worry fam, we'll save your top score :)"]
       }, function(){
           console.log('Picked: '+ this.state.picsPicked + ' - Score: ' + this.state.score)})
       console.log('Score: ' + this.state.score);
@@ -53,11 +58,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <span>{this.state.rightWrong[0]}</span>
-          <span>{this.state.rightWrong[1]}</span>
-          <span>Score: {this.state.score}</span>
-          <span>Top Score: {this.state.topScore}</span>
+        <header>
+        <h2>{this.state.rightWrong[0]}</h2>
+          <h2>{this.state.rightWrong[1]}</h2>
+          <h2>Score: {this.state.score}</h2>
+          <h2>Top Score: {this.state.topScore}</h2>
         </header>
           <div id="game">
             {shuffledArray.map(pic =>
